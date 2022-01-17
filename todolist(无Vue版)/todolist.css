@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    background: #A9A9A9;
+}
+ 
+.header{
+    width: 100%;
+    background-color: rgba(40,40,40,0.9);
+}
+ 
+.header .title{
+    margin: 0 auto;
+    width: 600px;
+    height: 50px;
+    overflow: hidden;
+}
+ 
+.header .title label{
+    float: left;
+    width: 100px;
+    line-height: 50px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    font-family: "Helvetica Neue",sans-serif;
+}
+ 
+.header .title input{
+    float: right;
+    width: 60%;
+    height: 24px;
+    border-radius: 5px;
+    text-indent: 10px;
+    margin-top: 12px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.24), 0 1px 6px rgba(0,0,0,0.45) inset;
+    border: none;
+}
+
+.header .title input:focus {
+    outline-style: solid;
+    outline-width: 0
+}
+ 
+.section .content{
+    width: 600px;
+    margin: 0 auto;
+}
+ 
+.section .content h2{
+    position: relative;
+}
+
+.section .content h2 span{
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 20px;
+    background: #E6E6FA;
+    line-height: 22px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+} 
+ 
+ol{
+    padding: 0;
+}
+ 
+li{
+    list-style: none;
+    cursor: move;
+}
+ 
+.section .content li{
+    position: relative;
+    height: 32px;
+    line-height: 32px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 0 45px;
+    border-left: 5px solid #008B8B;
+    border-radius: 3px;
+}
+ 
+.section .content li input{
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+ 
+a{
+    text-decoration: none;
+}
+ 
+.section .content li a{
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    display: inline-block;
+    width: 14px;
+    height: 12px;
+    border-radius: 14px;
+    border: 6px double #FFF;
+    background: #CCC;
+    line-height: 12px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+ 
+.section .content .donelist li{
+    border-left: 5px solid #999;
+    opacity: 0.5;
+}
+ 
+/* todo中的编辑框 */
+.section .content li p input {
+    top: 3px;
+    left: 40px;
+    width: 70%;
+    height: 20px;
+    line-height: 14px;
+    text-indent: 5px;
+    font-size: 14px;
+}
+ 
+.footer{
+    text-align: center;
+}
+
+.footer a{
+    color: #708090;
+}

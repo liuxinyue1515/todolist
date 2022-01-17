@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todolist</title>
+    <link rel="stylesheet" href="todolist.css">
+    <script type="text/javascript" src="todolist.js"></script>
+</head>
+<body>
+    <div class="header" id="header">
+        <div class="title">
+            <form action="javascript:postaction()" id="form">
+                <label for="title">todolist</label>
+                <input type="text" id="title" name="title" placeholder="添加todo" required autocomplete="off">
+            </form>
+        </div>
+    </div>
+ 
+    <div class="section">
+        <div class="content">
+            <h2>
+                正在进行
+                <span id="todocount">0</span>
+            </h2>
+            <div class="demo-box">
+                <ol class="todolist" id="todolist">
+ 
+                </ol>
+            </div>
+            
+            <h2>
+                已经完成
+                <span id="donecount">0</span>
+            </h2>
+            <div class="demo-box">
+                <ol class="donelist" id="donelist">
+  
+                </ol>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="footer">
+        <a href="javascript:clear();">清空todolist</a>
+    </div>
+</body>
+</html>
