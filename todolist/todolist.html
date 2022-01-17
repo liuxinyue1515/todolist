@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todolist</title>
+    <link rel="stylesheet" href="todolist.css">
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div class="header" id="header">
+            <div class="title">
+                <form id="form">
+                    <label for="title">todolist</label>
+                    <input @keydown.enter.prevent="addtodo" type="text" id="title" name="title" placeholder="添加todo" required autocomplete="off">
+                </form>
+            </div>
+        </div>
+     
+        <div class="section">
+            <div class="content">
+                <h2>
+                    正在进行
+                    <span id="todocount">{{todoArr.length}}</span>
+                </h2>
+                <div class="demo-box">
+                    <ol class="todolist" id="todolist">
+                        <li v-for="(item, index) in todoArr" :key="item.id">
+                            <input type='checkbox' @change="change(item)">
+                            <p :id="'p-'+item.id">
+                               <span v-show="item.check" @click="edit($event, item)">{{item.todo}}</span>
+                               <input v-show="!item.check" :id="'input-' + item.id" v-model="item.todo" @blur="item.check = true">
+                            </p>
+                            <a @click="remove(item)">X</a>
+                        </li>
+                    </ol>
+                </div>
+                
+                <h2>
+                    已经完成
+                    <span id="donecount">{{doneArr.length}}</span>
+                </h2>
+                <div class="demo-box">
+                    <ol class="donelist" id="donelist">
+                        <li v-for="(item, index) in doneArr" :key="item.id">
+                            <input type='checkbox' @change="change(item)" checked>
+                            <p :id="'p-'+item.id">
+                                <span v-show="item.check" @click="edit($event, item)">{{item.todo}}</span>
+                                <input v-show="!item.check" :id="'input-' + item.id" v-model="item.todo" @blur="item.check = true">
+                             </p>
+                            <a @click="remove(item)">X</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+     
+        <div class="footer">
+            <a @click="clear">清空todolist</a>
+        </div>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                todoitems:[],
+                count:0,
+                input: null
+            },
+            methods: {
+                addtodo(e){
+                    if (e.target.value == '')
+                        return
+                    this.todoitems.push({"id":this.count++, "todo": e.target.value, "done": false, "check":true});
+                    e.target.value = '';
+                },
+                // 改变 todo 状态
+                change(item){
+                    // console.log(item.todo+" "+item.id+" "+item.done);
+                    item.done = !item.done;
+                },
+                // 编辑
+                edit(e, item){
+                    item.check = false;
+                    this.input = e.target.nextSibling.nextSibling;
+                },
+                // 移除
+                remove(item){
+                    this.todoitems.splice(this.todoitems.indexOf(item),1);
+                    this.count--;
+                },
+                // 清空
+                clear(){
+                    this.todoitems.splice(0,this.todoitems.length);
+                    this.count = 0;
+                }
+            },
+            computed: {
+                todoArr(){
+                    return this.todoitems.filter((obj)=>{
+                        return !obj.done;
+                    })
+                },
+                doneArr(){
+                    return this.todoitems.filter((obj)=>{
+                        return obj.done;
+                    })
+                }
+            },
+            updated() {
+                console.log("updated")
+                if (this.input)
+                {
+                    this.input.setSelectionRange(0,this.input.value.length);
+                    this.input.focus();
+                    this.input = null
+                }
+            },
+        })
+    </script>
+</body>
+</html>
